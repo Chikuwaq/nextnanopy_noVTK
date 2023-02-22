@@ -76,7 +76,7 @@ def detect_software_new(inputfile):
                     extension = '.xml'
                     break
                 elif 'nextnano.NEGF{' in line:
-                    software = 'nextnano.NEGF'
+                    software = 'nextnano.NEGF++'
                     extension = '.negf'
                 elif '<nextnano.MSB' in line:
                     software = 'nextnano.MSB'
