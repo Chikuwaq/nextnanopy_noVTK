@@ -10,7 +10,6 @@ from nextnanopy.utils.formatting import best_str_to_name_unit
 from nextnanopy.utils.misc import get_filename, message_decorator, start_with_choice
 from nextnanopy import defaults
 
-import pyvista as pv
 
 
 _msgs = defaults.messages['load_output']
@@ -364,8 +363,8 @@ class DataFileTemplate(Output):
         self.metadata = datafile.metadata
         self.coords = datafile.coords
         self.variables = datafile.variables
-        if hasattr(datafile, 'vtk'):
-            self.vtk = datafile.vtk
+        # if hasattr(datafile, 'vtk'):
+        #     self.vtk = datafile.vtk
 
     def get_loader(self):
         pass
@@ -604,30 +603,30 @@ class AvsAscii(Output):
         return coords
 
 
-class Vtk(Output):
-    def __init__(self, fullpath, **loader_kwargs):
-        super().__init__(fullpath)
-        self.load()
+# class Vtk(Output):
+#     def __init__(self, fullpath, **loader_kwargs):
+#         super().__init__(fullpath)
+#         self.load()
 
-    def load(self):
-        self.vtk = pv.read(self.fullpath)
-        self.load_coords()
-        self.load_variables()
+#     def load(self):
+#         self.vtk = pv.read(self.fullpath)
+#         self.load_coords()
+#         self.load_variables()
 
-    def load_coords(self):
-        for i, coord in enumerate(['x', 'y', 'z']):
-            if not hasattr(self.vtk, coord):
-                continue
-            value = getattr(self.vtk, coord)
-            if value.size == 1:
-                continue
-            self.coords[coord] = Coord(name=coord, value=value, unit=None, dim=i)
+#     def load_coords(self):
+#         for i, coord in enumerate(['x', 'y', 'z']):
+#             if not hasattr(self.vtk, coord):
+#                 continue
+#             value = getattr(self.vtk, coord)
+#             if value.size == 1:
+#                 continue
+#             self.coords[coord] = Coord(name=coord, value=value, unit=None, dim=i)
 
-    def load_variables(self):
-        for _name in self.vtk.array_names:
-            name, unit = best_str_to_name_unit(_name, default_unit=None)
-            value = np.array(self.vtk[_name]).reshape(self.vtk.dimensions, order='F').squeeze()
-            self.variables[name] = Variable(name=name, value=value, unit=unit)
+#     def load_variables(self):
+#         for _name in self.vtk.array_names:
+#             name, unit = best_str_to_name_unit(_name, default_unit=None)
+#             value = np.array(self.vtk[_name]).reshape(self.vtk.dimensions, order='F').squeeze()
+#             self.variables[name] = Variable(name=name, value=value, unit=unit)
 
 
 def coord_axis(dim):

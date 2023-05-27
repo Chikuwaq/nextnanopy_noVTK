@@ -14,11 +14,10 @@ extras_require = {k: '>='.join(v[0:2]) for k, v in extras.items()}
 
 install_requires = [
     'numpy>=1.18',
-    'pyvista>=0.27',
 ]
 
 setuptools.setup(
-    name="nextnanopy",
+    name="nextnanopy_noVTK",
     version="0.1.16",
     author="nextnano GmbH",
     author_email="python@nextnano.com",
@@ -27,7 +26,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     keywords="nextnano",
-    url="https://github.com/nextnanopy/nextnanopy",
+    url="https://github.com/Chikuwaq/nextnanopy_noVTK",
     packages=setuptools.find_packages(exclude=["tests"]),
     classifiers=[
         "Programming Language :: Python :: 3",
