@@ -1,6 +1,6 @@
 import numpy as np
 from nextnanopy.utils.mycollections import DictList
-from nextnanopy.outputs import Output, AvsAscii, Vtk, DataFileTemplate
+from nextnanopy.outputs import Output, AvsAscii, DataFileTemplate
 from nextnanopy.utils.datasets import Variable, Coord
 import re
 import os
@@ -14,8 +14,6 @@ class DataFile(DataFileTemplate):
     def get_loader(self):
         if self.extension in ['.v', '.fld', '.coord']:
             loader = AvsAscii
-        elif self.extension == '.vtr':
-            loader = Vtk
         elif self.extension == '.txt':
             raise NotImplementedError(f'Loading nextnano.NEGF datafiles with extension.txt is not implemented yet')
         elif self.extension == '.dat':

@@ -61,7 +61,8 @@ Many of these packages come with Anaconda.
 Necessary packages:
 - [Python](https://www.python.org/) (tested with version 3.8)
 - [Numpy](http://numpy.scipy.org/)
-- [PyVista](https://www.pyvista.org/) (to load VTK data)
+
+The dependency on [PyVista](https://www.pyvista.org/) has been removed in this fork.
 
 Optional packages to enhance nextnanopy:
 - [Matplotlib](https://matplotlib.org/) (to visualize data)

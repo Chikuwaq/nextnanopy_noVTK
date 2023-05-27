@@ -176,7 +176,7 @@ class TestOutputs_nnp(unittest.TestCase):
             self.assertRaises(NotImplementedError, outputs.DataFile, join(folder_nnp, file), 'nextnano++')
 
     def test_all_2D(self):
-        files = [r'AvsAscii\bandedges.avs.fld',r'AvsAscii_one_file\bandedges.fld',r'AvsBinary\bandedges.avs.fld',r'AvsBinary_one_file\bandedges.fld',r'VTKAscii\bandedges.vtr']
+        files = [r'AvsAscii\bandedges.avs.fld',r'AvsAscii_one_file\bandedges.fld',r'AvsBinary\bandedges.avs.fld',r'AvsBinary_one_file\bandedges.fld']
         for file in files:
             filepath = os.path.join(folder_nnp, file)
             datafile = outputs.DataFile(filepath, product = 'nextnano++')
