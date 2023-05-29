@@ -67,7 +67,7 @@ def command_negfpp(
         inputfile      = ['--input-file', _path(inputfile)],
         outputdirectory= ['--outputdirectory', _path(outputdirectory)],
         database       = ['--database', _path(database)],
-        license        = ['--license', _path(license)],
+        license        = ['-c --license', _path(license)],  # for cloud computing
         threads        = ['--threads', threads],
     )
     return generate_command(kwargs.values())
